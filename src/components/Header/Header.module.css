@@ -1,0 +1,134 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #1f1d1d1a;
+  font-family: "Liter", sans-serif;
+  font-weight: 500;
+  max-height: 120px;
+}
+
+
+.header__left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.header__logo {
+  width: 120px;
+  margin-bottom: 12px;
+}
+
+.header__nav {
+  display: flex;
+  gap: 20px;
+}
+
+.header__navItem {
+  font-size: 16px;
+  color: black;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.header__navItem:hover {
+  color: #800020;
+}
+
+.header__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.header__topRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.header__contact {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  gap: 6px;
+}
+
+.header__phoneIcon {
+  font-size: 18px;
+  color: #691313;
+}
+
+
+.header__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.header__icon {
+  font-size: 18px;
+  color: #333;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.header__icon:hover {
+  color: #800020;
+}
+
+.header__search {
+  position: relative;
+  width: 100%;
+  max-width: 260px;
+}
+
+.header__input {
+  padding: 6px 36px 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+.header__input:focus {
+  border-color: #555;
+  outline: none;
+}
+.header__searchIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+@keyframes ring {
+  0% { transform: rotate(0); }
+  15% { transform: rotate(15deg); }
+  30% { transform: rotate(-10deg); }
+  45% { transform: rotate(10deg); }
+  60% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+  100% { transform: rotate(0); }
+}
+
+.header__phoneIcon--ringing {
+  animation: ring 1.5s infinite;
+  transform-origin: center;
+}
+
+
+

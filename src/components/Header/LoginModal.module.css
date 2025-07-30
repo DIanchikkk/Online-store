@@ -1,0 +1,110 @@
+.loginModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+  }
+  
+  .loginModal__backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .loginModal__content {
+    position: relative;
+    max-width: 400px;
+    margin: 100px auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .loginModal__close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .loginModal__title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .loginModal__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .loginModal__label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+  }
+  
+  .loginModal__input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 0.3rem;
+  }
+  
+  .loginModal__inputError {
+    border: 1px solid #d93025;
+    background-color: #fff5f5;
+  }
+  
+  .loginModal__button {
+    padding: 0.75rem;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .loginModal__button:hover {
+    background-color: #444;
+  }
+  
+  .loginModal__footer {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+  
+  .loginModal__toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #0070f3;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: color 0.3s ease;
+  }
+  
+  .loginModal__toggle:hover {
+    color: #000;
+    outline: none;
+  }
+  
+  .loginModal__error {
+    color: #d93025;
+    font-size: 0.8rem;
+    margin-top: 4px;
+  }
+  
