@@ -1,0 +1,73 @@
+.wrapper {
+    background-color: white;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card {
+    position: relative;
+    height: 250px;
+    width: 280px;
+    background-size: cover;
+    background-position: center bottom 20%;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: bottom 1.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+  
+  
+  .overlay {
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    transform: translateY(100%); 
+    transition: transform 1.4s ease; 
+    text-align: left;
+  }
+  
+  .card:hover .overlay {
+    transform: translateY(0);
+  }
+  
+  .description {
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: left;
+    font-family: "Liter", sans-serif;
+  }
+  
+  .likeButton {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  
+  .liked {
+    color: #e60023; 
+  }
+  

@@ -1,0 +1,149 @@
+.collections {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    background-color: #2f2f2f;
+    color: white;
+    display: flex;
+    gap: 30px;
+    font-family: "Liter", sans-serif;
+    margin-top: 100px;
+    box-sizing: border-box;
+    padding: 30px;
+    height: 650px;
+    z-index: 1;
+  }
+  
+  .collections__left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .collections__imagePlaceholder {
+    width: 100%;
+    max-width: 400px;
+    height: 480px;
+    background-color: transparent;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.4;
+    animation: floatHorizontal 4s ease-in-out infinite;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .collections__imagePlaceholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    user-select: none;
+    pointer-events: none;
+  }
+  
+  @keyframes floatHorizontal {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+  }
+  
+  .collections__right {
+    flex: 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+  }
+  
+  .collections__titleEnglish {
+    font-size: 160px;
+    font-family: "Great Vibes", cursive;
+    text-transform: lowercase;
+    opacity: 0.2;
+    position: absolute;
+    user-select: none;
+    z-index: 1;
+    top: 2%;
+    left: 30%;
+  }
+  
+  .collections__titleRussian {
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: absolute;
+    top: 22%;
+    left: 1%;
+    user-select: none;
+    letter-spacing: 10px;
+    font-family: "Libertinus Serif", serif;
+    z-index: 1;
+  }
+  
+  .collections__items {
+    display: flex;
+    gap: 30px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-top: 200px;
+    z-index: 0;
+    position: relative;
+    margin-left: -180px;
+  }
+  
+  .collectionItem {
+    background-color: transparent;
+    border-radius: 10px;
+    flex: 1 1 calc(25% - 12px);
+    max-width: calc(25% - 12px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    position: relative;
+  }
+  
+  .collectionItem:hover {
+    transform: translateY(-5px);
+  }
+  
+  .collectionImage {
+    width: 220px;
+    height: 250px;
+    border-radius: 8px;
+    object-fit: cover;
+    user-select: none;
+    pointer-events: none;
+  }
+  
+  .collectionItem__label {
+    font-size: 20px;
+    color: #e0dfdf;
+    text-align: left;
+    margin-top: 10px;
+    width: 100%;
+    font-family: "Libertinus Serif", serif;
+  }
+  
+  .up {
+    margin-top: 0px;
+  }
+  
+  .down {
+    margin-top: 40px;
+  }
+  

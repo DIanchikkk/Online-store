@@ -1,38 +1,43 @@
 import React, { useState } from 'react';
 import styles from './Header.module.css';
 import LoginModal from './LoginModal';
-import logo from '../../assets/img/logo.png';
-import { FiPhone, FiShoppingCart, FiUser, FiSearch } from 'react-icons/fi';
+import { FiPhone, FiUser, FiSearch, FiShoppingCart } from 'react-icons/fi';
+import { FaShoppingBag } from 'react-icons/fa'; 
 
 function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalMode, setModalMode] = useState('login'); 
+  const [modalMode, setModalMode] = useState('login');
 
   const openLoginModal = () => {
-    setModalMode('login'); 
+    setModalMode('login');
     setIsModalOpen(true);
   };
 
   return (
     <header className={styles.header}>
-      <div className={styles.header__left}>
-        <img src={logo} alt="Logo" className={styles.header__logo} />
 
+      <div className={styles.header__left}>
         <nav className={styles.header__nav}>
-          <a href="#" className={styles.header__navItem}>Каталог</a>
-          <a href="#" className={styles.header__navItem}>О проекте</a>
-          <a href="#" className={styles.header__navItem}>Сумки</a>
+          <a href="#" className={styles.header__navItem}>Главная</a>
           <a href="#" className={styles.header__navItem}>Скидки</a>
+          <a href="#" className={styles.header__navItem}>Каталог</a>
+          <a href="#" className={styles.header__navItem}>Корзина</a>
         </nav>
+      </div>
+
+      <div className={styles.header__center}>
+        <span className={styles.logoText}>
+             BAG<br />STORE
+        </span>
+        <FaShoppingBag className={styles.logoIcon} />
       </div>
 
       <div className={styles.header__right}>
         <div className={styles.header__topRow}>
           <div className={styles.header__contact}>
-          <FiPhone className={`${styles.header__phoneIcon} ${styles['header__phoneIcon--ringing']}`} />
+            <FiPhone className={`${styles.header__phoneIcon} ${styles['header__phoneIcon--ringing']}`} />
             <span>+7 (999) 123-45-67</span>
           </div>
-
           <div className={styles.header__actions}>
             <FiShoppingCart className={styles.header__icon} aria-label="Корзина" />
             <FiUser

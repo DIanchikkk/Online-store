@@ -1,0 +1,33 @@
+.discountBanner {
+    width: 100%;
+    background-color: #384857e3; 
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Liter', sans-serif;
+    overflow: hidden;
+    position: absolute;
+    top: 14.5%;
+  }
+  
+  .discountText {
+    display: inline-block;
+    white-space: nowrap;
+    animation: slideLeft 25s linear infinite;
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+  
+  @keyframes slideLeft {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  
+  

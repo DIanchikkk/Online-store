@@ -1,35 +1,34 @@
 .home {
-    padding: 80px 30px;
+    padding: 20px 30px;
     text-align: center;
     font-family: "Liter", sans-serif;
+    margin-top: 30px;
   }
   
   .home__hero {
-    position: relative;
-    margin-bottom: 70px; 
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px; 
+    padding: 0 10px;
+    gap: 10px;
   }
   
   .home__heroBackground {
     font-size: 100px;
     color: rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: -45px;
-    left: 50%;
-    transform: translateX(-50%);
     z-index: 1;
     user-select: none;
-
   }
-  
+
   .home__title {
-    font-size: 36px;
+    font-size: 60px;
+    text-transform: lowercase;
     letter-spacing: 8px;
-    text-transform: uppercase;
-    position: relative;
-    z-index: 2;
-    color: #800020;
+    color: #333;
     font-family: "Great Vibes", cursive;
     font-weight: 700;
+    margin-top: 70px;
+    margin-left: 30px;
   }
   
   .home__carouselContainer {
