@@ -1,0 +1,82 @@
+.discounts {
+    padding: 20px 30px;
+    text-align: center;
+    font-family: "Liter", sans-serif;
+    margin-top: 30px;
+    position: relative;
+  }
+  .discounts__titleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  
+  .discounts__title {
+    font-size: 60px;
+    text-transform: lowercase;
+    letter-spacing: 8px;
+    color: #333;
+    font-family: "Great Vibes", cursive;
+    font-weight: 700;
+    margin-top: 20px; 
+  }
+  
+  .discounts__heroBackground {
+    font-size: 100px;
+    color: rgba(0, 0, 0, 0.082);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    white-space: nowrap;
+    line-height: 1;
+    z-index: 1;
+  }
+  
+  .discounts__carouselContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 50px;
+  }
+  
+  .discounts__arrow {
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    padding: 5px;
+    transition: stroke 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .discounts__arrow svg path {
+    stroke: #333;
+    transition: stroke 0.3s ease;
+  }
+  
+  .discounts__arrow:hover:not(:disabled) svg path {
+    stroke: #3333332e;
+    transform: scale(1.1);
+  }
+  
+  .discounts__arrow:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+  
+  .discounts__carousel {
+    display: flex;
+    gap: 30px;
+    overflow: hidden;
+    justify-content: center;
+    max-width: 1000px;
+  }
+  .discountImage {
+    object-fit: cover !important;
+  }

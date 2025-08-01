@@ -14,7 +14,7 @@ function LookSection() {
   return (
     <>
       <div className={styles.titleContainer}>
-        <span className={styles.lookEng}>LOOK</span>
+        <span className={styles.lookEng}>LOOKS</span>
         <h2 className={styles.lookRu}>ОБРАЗЫ</h2>
       </div>
 

@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import styles from './BagsCard.module.css';
 import { FaShoppingCart } from 'react-icons/fa';
 
-function BagsCard({ bag }) {
+function BagsCard({ bag, badge = 'NEW', customImageClass }) {
   const [liked, setLiked] = useState(false);
 
   return (
     <div className={styles['bags-card']}>
-      <span className={styles['badge']}>NEW</span>
+      {badge && <span className={styles['badge']}>{badge}</span>}
 
       <div
         className={`${styles['bags-card__like']} ${liked ? styles.active : ''}`}
@@ -15,7 +15,7 @@ function BagsCard({ bag }) {
         aria-label={liked ? "Удалить из избранного" : "Добавить в избранное"}
         role="button"
         tabIndex={0}
-        onKeyPress={e => { if(e.key === 'Enter') setLiked(!liked); }}
+        onKeyPress={e => { if (e.key === 'Enter') setLiked(!liked); }}
       >
         <svg
           className={styles['like-icon']}
@@ -35,7 +35,7 @@ function BagsCard({ bag }) {
         <img
           src={bag.image}
           alt={bag.name}
-          className={styles['bags-card__image']}
+          className={`${styles['bags-card__image']} ${customImageClass ? styles[customImageClass] : ''}`}
           draggable={false}
         />
       </div>

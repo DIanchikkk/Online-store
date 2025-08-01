@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
 import LoginModal from './LoginModal';
 import { FiPhone, FiUser, FiSearch, FiShoppingCart } from 'react-icons/fi';
@@ -15,19 +16,47 @@ function Header() {
 
   return (
     <header className={styles.header}>
-
       <div className={styles.header__left}>
         <nav className={styles.header__nav}>
-          <a href="#" className={styles.header__navItem}>Главная</a>
-          <a href="#" className={styles.header__navItem}>Скидки</a>
-          <a href="#" className={styles.header__navItem}>Каталог</a>
-          <a href="#" className={styles.header__navItem}>Корзина</a>
+          <NavLink 
+            to="/" 
+            end
+            className={({ isActive }) => 
+              `${styles.header__navItem} ${isActive ? styles.active : ''}`
+            }
+          >
+            Главная
+          </NavLink>
+          <NavLink 
+            to="/discounts" 
+            className={({ isActive }) => 
+              `${styles.header__navItem} ${isActive ? styles.active : ''}`
+            }
+          >
+            Скидки
+          </NavLink>
+          <NavLink 
+            to="/catalog" 
+            className={({ isActive }) => 
+              `${styles.header__navItem} ${isActive ? styles.active : ''}`
+            }
+          >
+            Каталог
+          </NavLink>
+          <NavLink 
+            to="/cart" 
+            className={({ isActive }) => 
+              `${styles.header__navItem} ${isActive ? styles.active : ''}`
+            }
+          >
+            Корзина
+          </NavLink>
         </nav>
       </div>
 
       <div className={styles.header__center}>
         <span className={styles.logoText}>
-             BAG<br />STORE
+          BAG<br />STORE
         </span>
         <FaShoppingBag className={styles.logoIcon} />
       </div>
