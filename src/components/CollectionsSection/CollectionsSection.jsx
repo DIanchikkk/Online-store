@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './CollectionsSection.module.css';
 
 import collection from '../../assets/img/collection.jpg';
@@ -8,8 +9,10 @@ import thirdCollection from '../../assets/img/third-collection.webp';
 import fourthCollection from '../../assets/img/fourth-collection.webp';
 
 function CollectionsSection() {
+  const navigate = useNavigate();
+
   const handleClick = (id) => {
-    console.log(`Перейти к компоненту: ${id}`);
+    navigate(`/catalog?collection=${id}`);
   };
 
   return (
@@ -37,7 +40,7 @@ function CollectionsSection() {
             <img src={secondCollection} alt="Принты" className={styles.collectionImage} />
             <div className={styles.collectionItem__label}>Сумки с принтами</div>
           </div>
-          <div className={`${styles.collectionItem} ${styles.up}`} onClick={() => handleClick('umbrellas')}>
+          <div className={`${styles.collectionItem} ${styles.up}`} onClick={() => handleClick('canes-umbrellas')}>
             <img src={thirdCollection} alt="Зонты" className={styles.collectionImage} />
             <div className={styles.collectionItem__label}>Зонты, трости</div>
           </div>

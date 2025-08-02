@@ -7,8 +7,7 @@ import DiscountNotice from './components/DiscountNotice/DiscountNotice';
 
 import Home from './pages/Home/Home';
 import Discounts from './pages/Discounts/Discounts';
-// import Catalog from './pages/Catalog/Catalog';
-// import Cart from './pages/Cart/Cart';
+import Catalog from './pages/Catalog/Catalog';
 
 function App() {
   return (
@@ -20,8 +19,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/discounts" element={<Discounts />} />
-            {/* <Route path="/catalog" element={<Catalog />} />
-            <Route path="/cart" element={<Cart />} /> */}
+            <Route path="/catalog" element={<Catalog />} />
+            {/* <Route path="/cart" element={<Cart />} /> */}
           </Routes>
         </main>
         <Footer />
