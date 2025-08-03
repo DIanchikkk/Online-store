@@ -45,7 +45,7 @@
 
 .logoIcon {
   font-size: 40px;
-  color: #800020f1; 
+  color: #800020f1;
   margin-bottom: 10px;
 }
 
@@ -129,7 +129,8 @@
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 100%;
+  width: 85%;
+  margin-left: 50px;
 }
 
 .header__input:focus {
@@ -146,9 +147,15 @@
   font-size: 18px;
   pointer-events: none;
 }
-
-.active {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.738);
-  font-weight: 600;
+.header__icon:focus {
+  outline: none;
+  background: transparent;
+  box-shadow: none;
+}
+.header__navItem.active {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.923);
+  color: rgba(0, 0, 0, 0.877);
+  font-weight: bold;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 

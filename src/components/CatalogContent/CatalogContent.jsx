@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styles from './CatalogContent.module.css';
 import { FaShoppingCart } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../features/cart/cartSlice';
 
 const CatalogContent = ({ collection }) => {
   const bagsToShow = collection.bags.slice(0, 9);
@@ -21,6 +23,15 @@ const CatalogContent = ({ collection }) => {
 
 function BagsCard({ bag }) {
   const [liked, setLiked] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    if (!bag.id) {
+      console.error('Ошибка: у товара нет id');
+      return;
+    }
+    dispatch(addToCart({ ...bag }));
+  };
 
   return (
     <article className={styles['catalog__card']}>
@@ -64,6 +75,7 @@ function BagsCard({ bag }) {
         <button
           className={styles['catalog__button']}
           aria-label={`Добавить ${bag.name} в корзину`}
+          onClick={handleAddToCart}
         >
           <FaShoppingCart className={styles['catalog__cart-icon']} />
           В корзину

@@ -1,51 +1,56 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
 import LoginModal from './LoginModal';
 import { FiPhone, FiUser, FiSearch, FiShoppingCart } from 'react-icons/fi';
-import { FaShoppingBag } from 'react-icons/fa'; 
+import { FaShoppingBag } from 'react-icons/fa';
 
 function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState('login');
+  const navigate = useNavigate();
 
   const openLoginModal = () => {
     setModalMode('login');
     setIsModalOpen(true);
   };
 
+  const goToCartPage = () => {
+    navigate('/cart');
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.header__left}>
         <nav className={styles.header__nav}>
-          <NavLink 
-            to="/" 
+          <NavLink
+            to="/"
             end
-            className={({ isActive }) => 
+            className={({ isActive }) =>
               `${styles.header__navItem} ${isActive ? styles.active : ''}`
             }
           >
             Главная
           </NavLink>
-          <NavLink 
-            to="/discounts" 
-            className={({ isActive }) => 
+          <NavLink
+            to="/discounts"
+            className={({ isActive }) =>
               `${styles.header__navItem} ${isActive ? styles.active : ''}`
             }
           >
             Скидки
           </NavLink>
-          <NavLink 
-            to="/catalog" 
-            className={({ isActive }) => 
+          <NavLink
+            to="/catalog"
+            className={({ isActive }) =>
               `${styles.header__navItem} ${isActive ? styles.active : ''}`
             }
           >
             Каталог
           </NavLink>
-          <NavLink 
-            to="/cart" 
-            className={({ isActive }) => 
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
               `${styles.header__navItem} ${isActive ? styles.active : ''}`
             }
           >
@@ -64,11 +69,23 @@ function Header() {
       <div className={styles.header__right}>
         <div className={styles.header__topRow}>
           <div className={styles.header__contact}>
-            <FiPhone className={`${styles.header__phoneIcon} ${styles['header__phoneIcon--ringing']}`} />
+            <FiPhone
+              className={`${styles.header__phoneIcon} ${styles['header__phoneIcon--ringing']}`}
+            />
             <span>+7 (999) 123-45-67</span>
           </div>
           <div className={styles.header__actions}>
-            <FiShoppingCart className={styles.header__icon} aria-label="Корзина" />
+            <FiShoppingCart
+              className={styles.header__icon}
+              aria-label="Корзина"
+              onClick={goToCartPage}
+              tabIndex={0}
+              role="button"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') goToCartPage();
+              }}
+            />
+
             <FiUser
               className={styles.header__icon}
               onClick={openLoginModal}

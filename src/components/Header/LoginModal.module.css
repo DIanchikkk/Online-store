@@ -5,6 +5,7 @@
     width: 100%;
     height: 100%;
     z-index: 999;
+    font-family: "Liter", sans-serif;
   }
   
   .loginModal__backdrop {
@@ -27,11 +28,11 @@
   
   .loginModal__close {
     position: absolute;
-    top: 10px;
+    top: 0px;
     right: 15px;
     border: none;
     background: transparent;
-    font-size: 1.5rem;
+    font-size: 40px;
     cursor: pointer;
   }
   

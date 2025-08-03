@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
 import styles from './BagsCard.module.css';
 import { FaShoppingCart } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../features/cart/cartSlice';
 
 function BagsCard({ bag, badge = 'NEW', customImageClass }) {
   const [liked, setLiked] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    if (!bag.id) {
+      console.error('Ошибка: у товара отсутствует id');
+      return;
+    }
+
+    dispatch(addToCart({ ...bag }));
+  };
 
   return (
     <div className={styles['bags-card']}>
@@ -12,10 +24,12 @@ function BagsCard({ bag, badge = 'NEW', customImageClass }) {
       <div
         className={`${styles['bags-card__like']} ${liked ? styles.active : ''}`}
         onClick={() => setLiked(!liked)}
-        aria-label={liked ? "Удалить из избранного" : "Добавить в избранное"}
+        aria-label={liked ? 'Удалить из избранного' : 'Добавить в избранное'}
         role="button"
         tabIndex={0}
-        onKeyPress={e => { if (e.key === 'Enter') setLiked(!liked); }}
+        onKeyPress={e => {
+          if (e.key === 'Enter') setLiked(!liked);
+        }}
       >
         <svg
           className={styles['like-icon']}
@@ -33,9 +47,11 @@ function BagsCard({ bag, badge = 'NEW', customImageClass }) {
 
       <div className={styles['bags-card__imageContainer']}>
         <img
-          src={bag.image}
-          alt={bag.name}
-          className={`${styles['bags-card__image']} ${customImageClass ? styles[customImageClass] : ''}`}
+          src={bag.image || '/images/fallback.jpg'}
+          alt={bag.name || 'Товар'}
+          className={`${styles['bags-card__image']} ${
+            customImageClass ? styles[customImageClass] : ''
+          }`}
           draggable={false}
         />
       </div>
@@ -47,8 +63,14 @@ function BagsCard({ bag, badge = 'NEW', customImageClass }) {
       </div>
 
       <div className={styles['bags-card__footer']}>
-        <p className={styles['bags-card__price']}>{bag.price}</p>
-        <button className={styles['bags-card__button']} aria-label={`Добавить ${bag.name} в корзину`}>
+        <p className={styles['bags-card__price']}>
+          {bag.price ? `${bag.price} ₽` : 'Цена не указана'}
+        </p>
+        <button
+          className={styles['bags-card__button']}
+          aria-label={`Добавить ${bag.name} в корзину`}
+          onClick={handleAddToCart}
+        >
           <FaShoppingCart className={styles['cart-icon']} />
           В корзину
         </button>
