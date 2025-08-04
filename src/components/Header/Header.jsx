@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
 import LoginModal from './LoginModal';
-import { FiPhone, FiUser, FiSearch, FiShoppingCart } from 'react-icons/fi';
+import { FiPhone, FiUser, FiSearch, FiShoppingCart, FiMenu, FiX } from 'react-icons/fi';
 import { FaShoppingBag } from 'react-icons/fa';
 
 function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState('login');
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const openLoginModal = () => {
@@ -17,43 +18,39 @@ function Header() {
 
   const goToCartPage = () => {
     navigate('/cart');
+    setMenuOpen(false);
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(prev => !prev);
   };
 
   return (
     <header className={styles.header}>
+      <div className={styles.header__mobileMenuToggle} onClick={toggleMenu}>
+        {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+      </div>
+
       <div className={styles.header__left}>
-        <nav className={styles.header__nav}>
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) =>
-              `${styles.header__navItem} ${isActive ? styles.active : ''}`
-            }
-          >
+        <nav className={`${styles.header__nav} ${menuOpen ? styles.open : ''}`}>
+          <NavLink to="/" end className={({ isActive }) =>
+            `${styles.header__navItem} ${isActive ? styles.active : ''}`
+          } onClick={() => setMenuOpen(false)}>
             Главная
           </NavLink>
-          <NavLink
-            to="/discounts"
-            className={({ isActive }) =>
-              `${styles.header__navItem} ${isActive ? styles.active : ''}`
-            }
-          >
+          <NavLink to="/discounts" className={({ isActive }) =>
+            `${styles.header__navItem} ${isActive ? styles.active : ''}`
+          } onClick={() => setMenuOpen(false)}>
             Скидки
           </NavLink>
-          <NavLink
-            to="/catalog"
-            className={({ isActive }) =>
-              `${styles.header__navItem} ${isActive ? styles.active : ''}`
-            }
-          >
+          <NavLink to="/catalog" className={({ isActive }) =>
+            `${styles.header__navItem} ${isActive ? styles.active : ''}`
+          } onClick={() => setMenuOpen(false)}>
             Каталог
           </NavLink>
-          <NavLink
-            to="/cart"
-            className={({ isActive }) =>
-              `${styles.header__navItem} ${isActive ? styles.active : ''}`
-            }
-          >
+          <NavLink to="/cart" className={({ isActive }) =>
+            `${styles.header__navItem} ${isActive ? styles.active : ''}`
+          } onClick={goToCartPage}>
             Корзина
           </NavLink>
         </nav>
@@ -69,9 +66,7 @@ function Header() {
       <div className={styles.header__right}>
         <div className={styles.header__topRow}>
           <div className={styles.header__contact}>
-            <FiPhone
-              className={`${styles.header__phoneIcon} ${styles['header__phoneIcon--ringing']}`}
-            />
+            <FiPhone className={`${styles.header__phoneIcon} ${styles['header__phoneIcon--ringing']}`} />
             <span>+7 (999) 123-45-67</span>
           </div>
           <div className={styles.header__actions}>
@@ -85,7 +80,6 @@ function Header() {
                 if (e.key === 'Enter' || e.key === ' ') goToCartPage();
               }}
             />
-
             <FiUser
               className={styles.header__icon}
               onClick={openLoginModal}
@@ -95,11 +89,7 @@ function Header() {
         </div>
 
         <div className={styles.header__search}>
-          <input
-            type="text"
-            className={styles.header__input}
-            placeholder="Поиск..."
-          />
+          <input type="text" className={styles.header__input} placeholder="Поиск..." />
           <FiSearch className={styles.header__searchIcon} />
         </div>
       </div>

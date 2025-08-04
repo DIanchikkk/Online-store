@@ -35,7 +35,7 @@
     object-position: center;
     user-select: none;
     border-radius: 8px;
-    transition: none; /* Убрали scale */
+    transition: none; 
   }
   
   .badge {
