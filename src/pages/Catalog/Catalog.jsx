@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './Catalog.module.css';
-import CatalogSidebar from '../../components/CatalogSidebar/CatalogSidebar';
-import CatalogContent from '../../components/CatalogContent/CatalogContent';
-import collection from '../../data/collection';
+import { CatalogSidebar } from '../../components/CatalogSidebar/CatalogSidebar';
+import { CatalogContent } from '../../components/CatalogContent/CatalogContent';
+import { collection } from '../../mocks/collection';
 
-const Catalog = () => {
+export function Catalog() {
   const location = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
@@ -43,6 +44,4 @@ const Catalog = () => {
       </div>
     </div>
   );
-};
-
-export default Catalog;
+}

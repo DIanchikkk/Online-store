@@ -10,17 +10,16 @@
   
   .footer__container {
     display: flex;
-    justify-content: center; /* Центрируем секции по горизонтали */
+    justify-content: center;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
-    gap: 40px; /* Отступы между секциями */
+    gap: 40px;
   }
   
   .footer__section {
     min-width: 220px;
-    width: auto; /* Чтобы не растягивались */
-    /* flex: 1; — убираем, чтобы не растягивались */
+    width: auto;
   }
   
   .footer__logo {

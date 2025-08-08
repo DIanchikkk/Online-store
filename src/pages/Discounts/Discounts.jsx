@@ -1,60 +1,13 @@
 import React, { useState } from 'react';
 import styles from './Discounts.module.css';
-import BagsCard from '../../components/BagsCard/BagsCard';
+import { BagsCard } from '../../components/BagsCard/BagsCard';
 
-import seventhBag from '../../assets/img/sixth-bag.jpg';
-import eighthBag from '../../assets/img/fifth-bag.jpg';
-import ninthBag from '../../assets/img/fourth-bag.jpg';
-import tenthBag from '../../assets/img/third-bag.jpg';
-import eleventhBag from '../../assets/img/second-bag.jpg';
-import twelfthBag from '../../assets/img/first-bag.jpg';
+import ArrowLeft from '../../assets/img/ArrowLeft.svg?react';
+import ArrowRight from '../../assets/img/ArrowRight.svg?react';
 
-const discountedProducts = [
-  {
-    id: 101,
-    name: 'Guess',
-    price: '2 990₽',
-    image: seventhBag,
-    description: 'Стильная сумка Guess — качество и элегантность со скидкой!',
-  },
-  {
-    id: 102,
-    name: 'Urban Classic',
-    price: '3 500₽',
-    image: eighthBag,
-    description: 'Универсальный вариант для города — только сегодня со скидкой!',
-  },
-  {
-    id: 103,
-    name: 'Velvet Grace',
-    price: '3 500₽',
-    image: ninthBag,
-    description: 'Практичная и модная — добавь в гардероб по выгодной цене.',
-  },
-  {
-    id: 104,
-    name: 'Midnight Charm',
-    price: '3 500₽',
-    image: tenthBag,
-    description: 'Современный дизайн, удобство и скидка — всё в одном.',
-  },
-  {
-    id: 105,
-    name: 'Casual Luxe',
-    price: '3 500₽',
-    image: eleventhBag,
-    description: 'Акцентный аксессуар, который подчеркнёт твой стиль.',
-  },
-  {
-    id: 106,
-    name: 'Soft Touch',
-    price: '3 500₽',
-    image: twelfthBag,
-    description: 'Минимализм, комфорт и скидка — отличное сочетание.',
-  },
-];
+import { discountedProducts } from '../../mocks/discountedProducts';
 
-function Discounts() {
+export function Discounts() {
   const [startIndex, setStartIndex] = useState(0);
   const cardsToShow = 3;
 
@@ -76,10 +29,9 @@ function Discounts() {
   return (
     <div className={styles.discounts}>
       <div className={styles.discounts__titleContainer}>
-         <h2 className={styles.discounts__title}>discounts</h2>
-         <div className={styles.discounts__heroBackground}>скидки</div>
-    </div>
-
+        <h2 className={styles.discounts__title}>discounts</h2>
+        <div className={styles.discounts__heroBackground}>скидки</div>
+      </div>
 
       <section className={styles.discounts__carouselContainer}>
         <button
@@ -88,15 +40,7 @@ function Discounts() {
           disabled={startIndex === 0}
           aria-label="Предыдущие карточки"
         >
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M15 19L8 12L15 5"
-              stroke="#333"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <ArrowLeft />
         </button>
 
         <div className={styles.discounts__carousel}>
@@ -116,19 +60,9 @@ function Discounts() {
           disabled={startIndex >= discountedProducts.length - cardsToShow}
           aria-label="Следующие карточки"
         >
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M9 5L16 12L9 19"
-              stroke="#333"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <ArrowRight />
         </button>
       </section>
     </div>
   );
 }
-
-export default Discounts;

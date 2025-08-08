@@ -44,8 +44,8 @@
   top: 12px;
   right: 12px;
   cursor: pointer;
-  width: 28px;
-  height: 28px;
+  width: 36px; 
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,13 +59,17 @@
 }
 
 .catalog__like--active svg {
-  fill: #e60023;
-  stroke: #e60023;
+  color: #e60023; 
 }
 
 .catalog__like-icon {
-  width: 22px;
+  width: 22px; 
   height: 22px;
+  color: #aaa;
+}
+
+.catalog__like--active .catalog__like-icon {
+  color: #e60023;
 }
 
 .catalog__image-wrapper {
@@ -94,16 +98,6 @@
   font-weight: 600;
   color: #222;
   margin: 0 0 4px;
-  text-align: center;
-}
-
-.catalog__type {
-  font-size: 14px;
-  font-weight: 600;
-  color: #555;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
   text-align: center;
 }
 

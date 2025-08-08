@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './LoginModal.module.css';
 
-const LoginModal = ({ isOpen, onClose, mode = 'login', onChangeMode }) => {
+export function LoginModal({ isOpen, onClose, mode = 'login', onChangeMode }) {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -25,19 +25,19 @@ const LoginModal = ({ isOpen, onClose, mode = 'login', onChangeMode }) => {
   const validate = () => {
     const newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
+
     if (!formData.email) {
       newErrors.email = 'Email обязателен';
     } else if (!emailRegex.test(formData.email)) {
       newErrors.email = 'Неверный формат email';
     }
-  
+
     if (!formData.password) {
       newErrors.password = 'Пароль обязателен';
     } else if (formData.password.length < 6) {
       newErrors.password = 'Пароль должен быть не менее 6 символов';
     }
-  
+
     if (!isLogin) {
       if (!formData.confirmPassword) {
         newErrors.confirmPassword = 'Подтверждение пароля обязательно';
@@ -45,16 +45,16 @@ const LoginModal = ({ isOpen, onClose, mode = 'login', onChangeMode }) => {
         newErrors.confirmPassword = 'Пароли не совпадают';
       }
     }
-  
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
       console.log('Форма валидна:', formData);
-      onClose(); 
+      onClose();
     }
   };
 
@@ -173,6 +173,4 @@ const LoginModal = ({ isOpen, onClose, mode = 'login', onChangeMode }) => {
       </div>
     </div>
   );
-};
-
-export default LoginModal;
+}

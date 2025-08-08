@@ -35,8 +35,7 @@ import FourthBag from '../assets/img/fourth-bag.jpg';
 import FifthBag from '../assets/img/fifth-bag.jpg';
 import SixthBag from '../assets/img/sixth-bag.jpg';
 
-
-const collection = [
+export const collection = [
   {
     id: 'eco',
     title: 'Эко-кожа',
@@ -106,5 +105,3 @@ const collection = [
     ],
   },
 ];
-
-export default collection;

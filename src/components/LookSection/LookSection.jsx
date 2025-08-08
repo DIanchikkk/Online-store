@@ -1,4 +1,3 @@
-// LookSection.jsx
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
@@ -7,16 +6,15 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 
 import styles from './LookSection.module.css';
-import OutfitCard from './OutfitCard';
-import looks from './data';
+import { OutfitCard } from "../OutfitCard/OutfitCard";
+import { looksData } from '../../mocks/data';
 
-function LookSection() {
+export function LookSection() {
   return (
     <>
       <div className={styles.titleContainer}>
         <span className={styles.lookEng}>Look</span>
-        <h2 className={styles.lookRu}>Образы
-        </h2>
+        <h2 className={styles.lookRu}>Образы</h2>
       </div>
 
       <section className={styles.lookSection}>
@@ -35,7 +33,7 @@ function LookSection() {
             }}
             className={styles.swiperContainer}
           >
-            {looks.map((look) => (
+            {looksData.map((look) => (
               <SwiperSlide key={look.id}>
                 <OutfitCard look={look} />
               </SwiperSlide>
@@ -46,5 +44,3 @@ function LookSection() {
     </>
   );
 }
-
-export default LookSection;

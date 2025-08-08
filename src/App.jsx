@@ -4,16 +4,18 @@ import { Provider } from 'react-redux';
 import { store } from './app/store';
 import './styles/App.css';
 
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import DiscountNotice from './components/DiscountNotice/DiscountNotice';
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
+import { DiscountNotice } from './components/DiscountNotice/DiscountNotice';
 
-import Home from './pages/Home/Home';
-import Discounts from './pages/Discounts/Discounts';
-import Catalog from './pages/Catalog/Catalog';
-import Cart from './pages/Cart/Cart';
+import { Home } from './pages/Home/Home';
+import { Discounts } from './pages/Discounts/Discounts';
+import { Catalog } from './pages/Catalog/Catalog';
+import { Cart } from './pages/Cart/Cart';
 
-function App() {
+
+
+export const App = () => {
   return (
     <Provider store={store}>
       <div className="app">
@@ -35,6 +37,6 @@ function App() {
       </div>
     </Provider>
   );
-}
+};
 
-export default App;
+export default App; 

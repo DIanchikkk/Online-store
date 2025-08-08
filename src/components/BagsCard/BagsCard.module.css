@@ -1,151 +1,160 @@
 .bags-card {
-    width: 300px;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: "Liter", sans-serif;
-    position: relative;
-    transition: transform 0.2s ease;
-  }
-  
-  .bags-card:hover {
-    transform: translateY(-4px);
-  }
-  
-  .bags-card__imageContainer {
-    width: 100%;
-    height: 220px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 12px;
-  }
-  
-  .bags-card__image {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
-    object-position: center;
-    user-select: none;
-    border-radius: 8px;
-    transition: none; 
-  }
-  
-  .badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: #001f3f;
-    color: white;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    animation: fadeIn 0.5s ease;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  /* Лайк иконка */
-  .bags-card__like {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    cursor: pointer;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-  }
-  
-  .bags-card__like:hover {
-    transform: scale(1.15);
-  }
-  
-  .like-icon {
-    width: 22px;
-    height: 22px;
-  }
-  
-  .bags-card__content {
-    text-align: center;
-    width: 100%;
-    margin-bottom: 12px;
-  }
-  
-  .bags-card__name {
-    font-size: 20px;
-    margin: 0 0 4px;
-    font-weight: 600;
-    color: #222;
-  }
-  
-  .bags-card__type {
-    font-size: 14px;
-    font-weight: 600;
-    color: #555;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-  }
-  
-  .bags-card__description {
-    font-size: 14px;
-    color: #777;
-    line-height: 1.4;
-    margin: 0;
-  }
-  
-  .bags-card__footer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: auto;
-  }
-  
-  .bags-card__price {
-    font-size: 18px;
-    font-weight: 700;
-    color: #000;
-    background-color: transparent;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .bags-card__button {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-  }
-  
-  .bags-card__button:hover {
-    background-color: #222;
-  }
-  
-  .cart-icon {
-    font-size: 16px;
-  }
-  
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Liter", sans-serif;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.bags-card:hover {
+  transform: translateY(-4px);
+}
+
+.bags-card__imageContainer {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.bags-card__image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+  user-select: none;
+  border-radius: 8px;
+  transition: none; 
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #001f3f;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bags-card__like {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+.bags-card__like:hover {
+  transform: scale(1.15);
+}
+
+
+.like-icon {
+  width: 22px;
+  height: 22px;
+  fill: #aaa; 
+  transition: fill 0.3s ease;
+  pointer-events: none; 
+}
+
+.bags-card__like.active .like-icon {
+  fill: #e60023;
+}
+
+.bags-card__content {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.bags-card__name {
+  font-size: 20px;
+  margin: 0 0 4px;
+  font-weight: 600;
+  color: #222;
+}
+
+.bags-card__type {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.bags-card__description {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.bags-card__footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.bags-card__price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.bags-card__button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.bags-card__button:hover {
+  background-color: #222;
+}
+
+.cart-icon {
+  width: 16px;
+  height: 16px;
+  fill: #fff;
+}

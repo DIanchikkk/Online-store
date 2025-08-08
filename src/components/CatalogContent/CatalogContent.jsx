@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styles from './CatalogContent.module.css';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaHeart, FaRegHeart } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../features/cart/cartSlice';
 
-const CatalogContent = ({ collection }) => {
+export function CatalogContent({ collection }) {
   const bagsToShow = collection.bags.slice(0, 9);
 
   return (
@@ -19,9 +19,9 @@ const CatalogContent = ({ collection }) => {
       </div>
     </section>
   );
-};
+}
 
-function BagsCard({ bag }) {
+export function BagsCard({ bag }) {
   const [liked, setLiked] = useState(false);
   const dispatch = useDispatch();
 
@@ -42,18 +42,11 @@ function BagsCard({ bag }) {
         onClick={() => setLiked(!liked)}
         aria-label={liked ? 'Удалить из избранного' : 'Добавить в избранное'}
       >
-        <svg
-          className={styles['catalog__like-icon']}
-          viewBox="0 0 24 24"
-          fill={liked ? '#e60023' : 'none'}
-          stroke={liked ? '#e60023' : '#aaa'}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.72-7.72 1.06-1.06a5.5 5.5 0 0 0 0-7.84z" />
-        </svg>
+        {liked ? (
+          <FaHeart className={styles['catalog__like-icon']} />
+        ) : (
+          <FaRegHeart className={styles['catalog__like-icon']} />
+        )}
       </button>
 
       <div className={styles['catalog__image-wrapper']}>
@@ -67,11 +60,15 @@ function BagsCard({ bag }) {
 
       <h3 className={styles['catalog__name']}>{bag.name}</h3>
       {bag.description && (
-        <p className={styles['catalog__description-text']}>{bag.description}</p>
+        <p className={styles['catalog__description-text']}>
+          {bag.description}
+        </p>
       )}
 
       <div className={styles['catalog__footer']}>
-        <p className={styles['catalog__price']}>{bag.price || 'Цена не указана'}</p>
+        <p className={styles['catalog__price']}>
+          {bag.price ? `${bag.price} ₽` : 'Цена не указана'}
+        </p>
         <button
           className={styles['catalog__button']}
           aria-label={`Добавить ${bag.name} в корзину`}
@@ -84,5 +81,3 @@ function BagsCard({ bag }) {
     </article>
   );
 }
-
-export default CatalogContent;

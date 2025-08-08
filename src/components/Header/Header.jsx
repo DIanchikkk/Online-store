@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
-import LoginModal from './LoginModal';
+import { LoginModal } from "../LoginModal/LoginModal";
 import { FiPhone, FiUser, FiSearch, FiShoppingCart, FiMenu, FiX } from 'react-icons/fi';
 import { FaShoppingBag } from 'react-icons/fa';
 
-function Header() {
+export function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState('login');
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,24 +33,41 @@ function Header() {
 
       <div className={styles.header__left}>
         <nav className={`${styles.header__nav} ${menuOpen ? styles.open : ''}`}>
-          <NavLink to="/" end className={({ isActive }) =>
-            `${styles.header__navItem} ${isActive ? styles.active : ''}`
-          } onClick={() => setMenuOpen(false)}>
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              `${styles.header__navItem} ${isActive ? styles.active : ''}`
+            }
+            onClick={() => setMenuOpen(false)}
+          >
             Главная
           </NavLink>
-          <NavLink to="/discounts" className={({ isActive }) =>
-            `${styles.header__navItem} ${isActive ? styles.active : ''}`
-          } onClick={() => setMenuOpen(false)}>
+          <NavLink
+            to="/discounts"
+            className={({ isActive }) =>
+              `${styles.header__navItem} ${isActive ? styles.active : ''}`
+            }
+            onClick={() => setMenuOpen(false)}
+          >
             Скидки
           </NavLink>
-          <NavLink to="/catalog" className={({ isActive }) =>
-            `${styles.header__navItem} ${isActive ? styles.active : ''}`
-          } onClick={() => setMenuOpen(false)}>
+          <NavLink
+            to="/catalog"
+            className={({ isActive }) =>
+              `${styles.header__navItem} ${isActive ? styles.active : ''}`
+            }
+            onClick={() => setMenuOpen(false)}
+          >
             Каталог
           </NavLink>
-          <NavLink to="/cart" className={({ isActive }) =>
-            `${styles.header__navItem} ${isActive ? styles.active : ''}`
-          } onClick={goToCartPage}>
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              `${styles.header__navItem} ${isActive ? styles.active : ''}`
+            }
+            onClick={goToCartPage}
+          >
             Корзина
           </NavLink>
         </nav>
@@ -103,5 +120,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CatalogSidebar.module.css';
 
-const CatalogSidebar = ({ collections, activeId, onSelect }) => {
+export function CatalogSidebar({ collections, activeId, onSelect }) {
   return (
     <div className={styles.sidebar}>
       {collections.map((item) => (
@@ -15,6 +15,4 @@ const CatalogSidebar = ({ collections, activeId, onSelect }) => {
       ))}
     </div>
   );
-};
-
-export default CatalogSidebar;
+}

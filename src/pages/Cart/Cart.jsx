@@ -2,21 +2,21 @@ import React from 'react';
 import styles from './Cart.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  increaseQuantity,
-  decreaseQuantity,
-  removeFromCart,
-} from '../../features/cart/cartSlice';
+    increaseQuantity,
+    decreaseQuantity,
+    removeFromCart,
+    } from '../../features/cart/cartSlice';
 
-const Cart = () => {
-  const dispatch = useDispatch();
-  const items = useSelector(state => state.cart.items);
+    export function Cart() {  
+    const dispatch = useDispatch();
+    const items = useSelector(state => state.cart.items);
 
-  const totalPrice = items.reduce(
-    (total, item) =>
-      total +
-      parseFloat(item.price.replace(/\s*₽/, '').replace(/\s/g, '')) * item.quantity,
-    0
-  );
+    const totalPrice = items.reduce(
+        (total, item) =>
+        total +
+        parseFloat(item.price.replace(/\s*₽/, '').replace(/\s/g, '')) * item.quantity,
+        0
+    );
 
   return (
     <div className={styles.cart}>
@@ -96,6 +96,4 @@ const Cart = () => {
       )}
     </div>
   );
-};
-
-export default Cart;
+}
