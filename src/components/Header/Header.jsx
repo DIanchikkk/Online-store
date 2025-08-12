@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
+import './Header.media.css';
 import { LoginModal } from "../LoginModal/LoginModal";
 import { FiPhone, FiUser, FiSearch, FiShoppingCart, FiMenu, FiX } from 'react-icons/fi';
-import { FaShoppingBag } from 'react-icons/fa';
+import logoBag from '../../assets/img/bag-logo.jpeg';
 
 export function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -77,7 +78,7 @@ export function Header() {
         <span className={styles.logoText}>
           BAG<br />STORE
         </span>
-        <FaShoppingBag className={styles.logoIcon} />
+        <img src={logoBag} alt="Logo" className={styles.logoImage} />
       </div>
 
       <div className={styles.header__right}>

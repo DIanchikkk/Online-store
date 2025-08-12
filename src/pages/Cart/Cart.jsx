@@ -2,98 +2,110 @@ import React from 'react';
 import styles from './Cart.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-    increaseQuantity,
-    decreaseQuantity,
-    removeFromCart,
-    } from '../../features/cart/cartSlice';
+  increaseQuantity,
+  decreaseQuantity,
+  removeFromCart,
+} from '../../features/cart/cartSlice';
+import { BackButton } from '../../components/BackButton/BackButton';
 
-    export function Cart() {  
-    const dispatch = useDispatch();
-    const items = useSelector(state => state.cart.items);
+export function Cart() {
+  const dispatch = useDispatch();
+  const items = useSelector(state => state.cart.items);
 
-    const totalPrice = items.reduce(
-        (total, item) =>
-        total +
-        parseFloat(item.price.replace(/\s*₽/, '').replace(/\s/g, '')) * item.quantity,
-        0
-    );
+  const totalPrice = items.reduce(
+    (total, item) =>
+      total +
+      parseFloat(item.price.replace(/\s*₽/, '').replace(/\s/g, '')) * item.quantity,
+    0
+  );
 
   return (
-    <div className={styles.cart}>
-      <h1 className={styles.cart__title}>Ваша корзина</h1>
+    <div className={styles['cart-page']}>
+      <BackButton style={{ top: '-20px', left: '50px' }} />
+      
+      <div className={styles['cart-card']}>
+        <h1 className={styles['cart-card__title']}>Ваша корзина</h1>
 
-      {items.length === 0 ? (
-        <p className={styles.cart__empty}>Корзина пуста</p>
-      ) : (
-        <>
-          <ul className={styles.cart__list}>
-            {items.map(item => (
-              <li key={item.id} className={styles.cart__item}>
-                <img src={item.image} alt={item.name} className={styles.cart__image} />
+        {items.length === 0 ? (
+          <p className={styles['cart-card__empty']}>Корзина пуста</p>
+        ) : (
+          <>
+            <ul className={styles['cart-card__list']}>
+              {items.map(item => (
+                <li key={item.id} className={styles['cart-card__item']}>
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className={styles['cart-card__image']}
+                  />
 
-                <div className={styles.cart__info}>
-                  <span className={styles.cart__name}>{item.name}</span>
+                  <div className={styles['cart-card__info']}>
+                    <span className={styles['cart-card__name']}>{item.name}</span>
 
-                  <div className={styles.cart__controls}>
-                    <button
-                      className={styles.cart__btn}
-                      onClick={() => dispatch(decreaseQuantity(item.id))}
-                      aria-label={`Уменьшить количество ${item.name}`}
-                    >
-                      −
-                    </button>
+                    <div className={styles['cart-card__controls']}>
+                      <button
+                        className={styles['cart-card__btn']}
+                        onClick={() => dispatch(decreaseQuantity(item.id))}
+                        aria-label={`Уменьшить количество ${item.name}`}
+                      >
+                        −
+                      </button>
 
-                    <span className={styles.cart__quantity}>{item.quantity}</span>
+                      <span className={styles['cart-card__quantity']}>{item.quantity}</span>
 
-                    <button
-                      className={styles.cart__btn}
-                      onClick={() => dispatch(increaseQuantity(item.id))}
-                      aria-label={`Увеличить количество ${item.name}`}
-                    >
-                      +
-                    </button>
+                      <button
+                        className={styles['cart-card__btn']}
+                        onClick={() => dispatch(increaseQuantity(item.id))}
+                        aria-label={`Увеличить количество ${item.name}`}
+                      >
+                        +
+                      </button>
+                    </div>
                   </div>
-                </div>
 
-                <div className={styles.cart__actions}>
-                  <span className={styles.cart__price}>{item.price}</span>
+                  <div className={styles['cart-card__actions']}>
+                    <span className={styles['cart-card__price']}>{item.price}</span>
 
-                  <div className={styles.cart__buttonsRow}>
-                    <button
-                      className={styles.cart__remove}
-                      onClick={() => dispatch(removeFromCart(item.id))}
-                      aria-label={`Удалить ${item.name} из корзины`}
-                    >
-                      Удалить
-                    </button>
+                    <div className={styles['cart-card__buttons-row']}>
+                      <button
+                        className={styles['cart-card__remove']}
+                        onClick={() => dispatch(removeFromCart(item.id))}
+                        aria-label={`Удалить ${item.name} из корзины`}
+                      >
+                        Удалить
+                      </button>
 
-                    <button
-                      className={styles.cart__favorite}
-                      aria-label={`Добавить ${item.name} в избранное`}
-                      onClick={() => alert(`Добавлено в избранное: ${item.name}`)}
-                    >
-                      В избранное
-                    </button>
+                      <button
+                        className={styles['cart-card__favorite']}
+                        aria-label={`Добавить ${item.name} в избранное`}
+                        onClick={() => alert(`Добавлено в избранное: ${item.name}`)}
+                      >
+                        В избранное
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+                </li>
+              ))}
+            </ul>
 
-          <div className={styles.cart__footer}>
-            <div className={styles.cart__total}>
-              Итого: <span className={styles.cart__totalPrice}>{totalPrice.toLocaleString('ru-RU')} ₽</span>
+            <div className={styles['cart-card__footer']}>
+              <div className={styles['cart-card__total']}>
+                Итого:{' '}
+                <span className={styles['cart-card__total-price']}>
+                  {totalPrice.toLocaleString('ru-RU')} ₽
+                </span>
+              </div>
+              <button
+                className={styles['cart-card__order-button']}
+                aria-label="Оформить заказ"
+                onClick={() => alert('Ваш заказ принят! Спасибо!')}
+              >
+                Сделать заказ
+              </button>
             </div>
-            <button
-              className={styles.cart__orderButton}
-              aria-label="Оформить заказ"
-              onClick={() => alert('Ваш заказ принят! Спасибо!')}
-            >
-              Сделать заказ
-            </button>
-          </div>
-        </>
-      )}
+          </>
+        )}
+      </div>
     </div>
   );
 }

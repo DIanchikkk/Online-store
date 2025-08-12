@@ -1,40 +1,46 @@
 .catalog {
-    padding: 40px;
-  }
-  
-  .catalog__hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin: 10px 0 30px;
-  }
-  
-  .catalog__titleEng {
-    font-size: 60px;
-    font-weight: 700;
-    font-family: "Great Vibes", cursive;
-    color: #000;
-    margin: 0;
-    text-transform: lowercase;
-    letter-spacing: 8px;
-    line-height: 1;
-    margin-top: 30px;
-  }
-  
-  .catalog__titleRus {
-    font-size: 100px;
-    font-weight: 700;
-    font-family: 'Liter', sans-serif;
-    color: rgba(0, 0, 0, 0.086);
-    margin: 0;
-    text-transform: uppercase;
-    line-height: 1;
-    user-select: none;
-  }
-  
-  .catalog__container {
-    display: flex;
-    gap: 40px;
-  }
-  
+  padding: 50px;
+}
+
+.catalog__hero {
+  position: relative; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 10px 0 30px;
+}
+
+.titlesWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.catalog__titleEng {
+  font-size: 60px;
+  font-weight: 700;
+  font-family: "Great Vibes", cursive;
+  color: #000;
+  margin: 0;
+  text-transform: lowercase;
+  letter-spacing: 8px;
+  line-height: 1;
+  margin-top: 30px;
+}
+
+.catalog__titleRus {
+  font-size: 100px;
+  font-weight: 700;
+  font-family: 'Liter', sans-serif;
+  color: rgba(0, 0, 0, 0.086);
+  margin: 0;
+  text-transform: uppercase;
+  line-height: 1;
+  user-select: none;
+}
+
+.catalog__container {
+  display: flex;
+  gap: 40px;
+}

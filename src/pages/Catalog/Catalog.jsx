@@ -4,6 +4,7 @@ import styles from './Catalog.module.css';
 import { CatalogSidebar } from '../../components/CatalogSidebar/CatalogSidebar';
 import { CatalogContent } from '../../components/CatalogContent/CatalogContent';
 import { collection } from '../../mocks/collection';
+import { BackButton } from '../../components/BackButton/BackButton';
 
 export function Catalog() {
   const location = useLocation();
@@ -30,6 +31,7 @@ export function Catalog() {
   return (
     <div className={styles.catalog}>
       <div className={styles.catalog__hero}>
+        <BackButton />
         <h1 className={styles.catalog__titleEng}>Catalog</h1>
         <h2 className={styles.catalog__titleRus}>Каталог</h2>
       </div>

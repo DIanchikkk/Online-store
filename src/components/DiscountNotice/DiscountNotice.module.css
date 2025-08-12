@@ -1,17 +1,20 @@
 .discountBanner {
-    width: 100%;
-    background-color: #384857e3; 
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-    font-weight: bold;
-    font-size: 16px;
-    font-family: 'Liter', sans-serif;
-    overflow: hidden;
-    position: absolute;
-    top: 14.5%;
-  }
-  
+  position: fixed;
+  top: 119px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #384857e3;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: 'Liter', sans-serif;
+  overflow: hidden;
+  z-index: 900; 
+}
+
   .discountText {
     display: inline-block;
     white-space: nowrap;

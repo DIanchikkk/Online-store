@@ -76,7 +76,6 @@
   transform: scale(1.15);
 }
 
-
 .like-icon {
   width: 22px;
   height: 22px;
@@ -121,8 +120,9 @@
 .bags-card__footer {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
   margin-top: auto;
 }
 
@@ -130,16 +130,16 @@
   font-size: 18px;
   font-weight: 700;
   color: #000;
-  background-color: transparent;
-  padding: 0;
   margin: 0;
+  width: 70px;
 }
 
 .bags-card__button {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  padding: 8px 16px;
+  padding: 8px 12px;
   background-color: #000;
   color: #fff;
   border: none;
@@ -153,8 +153,17 @@
   background-color: #222;
 }
 
+.bags-card__more {
+  width: 140px;
+}
+
+.bags-card__iconButton {
+  width: 42px;
+  padding: 11px;
+}
+
 .cart-icon {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   fill: #fff;
 }

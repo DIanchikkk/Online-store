@@ -16,6 +16,20 @@ export function BagsCard({ bag, badge = 'NEW', customImageClass }) {
     dispatch(addToCart({ ...bag }));
   };
 
+  const handleMoreDetails = () => {
+    console.log('Переход на страницу товара:', bag.id);
+  };
+
+  let formattedPrice = '';
+  if (bag.price !== undefined && bag.price !== null) {
+    const priceStr = String(bag.price).trim();
+    if (priceStr.includes('₽')) {
+      formattedPrice = priceStr;
+    } else {
+      formattedPrice = `${priceStr} ₽`;
+    }
+  }
+
   return (
     <div className={styles['bags-card']}>
       {badge && <span className={styles['badge']}>{badge}</span>}
@@ -26,7 +40,7 @@ export function BagsCard({ bag, badge = 'NEW', customImageClass }) {
         aria-label={liked ? 'Удалить из избранного' : 'Добавить в избранное'}
         role="button"
         tabIndex={0}
-        onKeyDown={e => {
+        onKeyDown={(e) => {
           if (e.key === 'Enter') setLiked(!liked);
         }}
       >
@@ -55,16 +69,21 @@ export function BagsCard({ bag, badge = 'NEW', customImageClass }) {
       </div>
 
       <div className={styles['bags-card__footer']}>
-        <p className={styles['bags-card__price']}>
-          {bag.price ? `${bag.price} ₽` : 'Цена не указана'}
-        </p>
+        {formattedPrice && (
+          <p className={styles['bags-card__price']}>{formattedPrice}</p>
+        )}
         <button
-          className={styles['bags-card__button']}
-          aria-label={`Добавить ${bag.name} в корзину`}
+          className={`${styles['bags-card__button']} ${styles['bags-card__more']}`}
+          onClick={handleMoreDetails}
+        >
+          Подробнее
+        </button>
+        <button
+          className={`${styles['bags-card__button']} ${styles['bags-card__iconButton']}`}
           onClick={handleAddToCart}
+          aria-label={`Добавить ${bag.name} в корзину`}
         >
           <FaShoppingCart className={styles['cart-icon']} />
-          В корзину
         </button>
       </div>
     </div>

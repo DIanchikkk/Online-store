@@ -6,6 +6,7 @@ import ArrowLeft from '../../assets/img/ArrowLeft.svg?react';
 import ArrowRight from '../../assets/img/ArrowRight.svg?react';
 
 import { discountedProducts } from '../../mocks/discountedProducts';
+import { BackButton } from '../../components/BackButton/BackButton';
 
 export function Discounts() {
   const [startIndex, setStartIndex] = useState(0);
@@ -28,6 +29,8 @@ export function Discounts() {
 
   return (
     <div className={styles.discounts}>
+      <BackButton style={{ top: '60px', right: 'auto', left: '50px' }} />
+
       <div className={styles.discounts__titleContainer}>
         <h2 className={styles.discounts__title}>discounts</h2>
         <div className={styles.discounts__heroBackground}>скидки</div>

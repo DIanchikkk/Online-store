@@ -1,0 +1,40 @@
+/* 
+@media (max-width: 480px) {
+    .discountBanner {
+      padding: 8px 0;
+      font-size: 12px;
+    }
+    .discountText {
+      animation-duration: 20s;
+    }
+  }
+  
+  @media (min-width: 481px) and (max-width: 768px) {
+    .discountBanner {
+      padding: 9px 0;
+      font-size: 14px;
+    }
+    .discountText {
+      animation-duration: 22s;
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .discountBanner {
+      padding: 10px 0;
+      font-size: 15px;
+    }
+    .discountText {
+      animation-duration: 24s;
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    .discountBanner {
+      padding: 10px 0;
+      font-size: 16px;
+    }
+    .discountText {
+      animation-duration: 25s;
+    }
+  } */

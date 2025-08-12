@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './DiscountNotice.module.css';
+import './DiscountNotice.media.css'
 
 export function DiscountNotice() {
   return (

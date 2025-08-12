@@ -1,0 +1,20 @@
+.backButton {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 8px;
+    font-family: "Liter", sans-serif;
+    user-select: none;
+    transition: color 0.3s ease;
+    text-shadow: 0 0 3px rgba(0,0,0,0.1);
+  }
+  
+  .backButton:hover {
+    color: #000;
+  }
+  

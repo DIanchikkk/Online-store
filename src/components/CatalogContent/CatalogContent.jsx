@@ -9,19 +9,19 @@ export function CatalogContent({ collection }) {
 
   return (
     <section className={styles.catalog}>
-      <h2 className={styles['catalog__title']}>{collection.title}</h2>
-      <p className={styles['catalog__description']}>{collection.description}</p>
+      <h2 className={styles.catalog__title}>{collection.title}</h2>
+      <p className={styles.catalog__description}>{collection.description}</p>
 
-      <div className={styles['catalog__grid']}>
+      <div className={styles.catalog__grid}>
         {bagsToShow.map((bag) => (
-          <BagsCard key={bag.id} bag={bag} />
+          <CatalogCard key={bag.id} bag={bag} />
         ))}
       </div>
     </section>
   );
 }
 
-export function BagsCard({ bag }) {
+function CatalogCard({ bag }) {
   const [liked, setLiked] = useState(false);
   const dispatch = useDispatch();
 
@@ -33,49 +33,67 @@ export function BagsCard({ bag }) {
     dispatch(addToCart({ ...bag }));
   };
 
+  const handleMoreDetails = () => {
+    console.log('Переход на страницу товара:', bag.id);
+  };
+
+  let formattedPrice = '';
+  if (bag.price !== undefined && bag.price !== null) {
+    const priceStr = String(bag.price).trim();
+    formattedPrice = priceStr.includes('₽') ? priceStr : `${priceStr} ₽`;
+  }
+
   return (
-    <article className={styles['catalog__card']}>
-      <button
-        className={`${styles['catalog__like']} ${
-          liked ? styles['catalog__like--active'] : ''
-        }`}
+    <article className={styles['catalog-card']}>
+      <div
+        className={`${styles['catalog-card__like']} ${liked ? styles.active : ''}`}
         onClick={() => setLiked(!liked)}
         aria-label={liked ? 'Удалить из избранного' : 'Добавить в избранное'}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === 'Enter') setLiked(!liked); }}
       >
         {liked ? (
-          <FaHeart className={styles['catalog__like-icon']} />
+          <FaHeart className={styles['like-icon']} />
         ) : (
-          <FaRegHeart className={styles['catalog__like-icon']} />
+          <FaRegHeart className={styles['like-icon']} />
         )}
-      </button>
+      </div>
 
-      <div className={styles['catalog__image-wrapper']}>
+      <div className={styles['catalog-card__imageContainer']}>
         <img
-          src={bag.image}
-          alt={bag.name}
-          className={styles['catalog__image']}
+          src={bag.image || '/images/fallback.jpg'}
+          alt={bag.name || 'Товар'}
+          className={styles['catalog-card__image']}
           draggable={false}
         />
       </div>
 
-      <h3 className={styles['catalog__name']}>{bag.name}</h3>
-      {bag.description && (
-        <p className={styles['catalog__description-text']}>
-          {bag.description}
-        </p>
-      )}
+      <div className={styles['catalog-card__content']}>
+        <h3 className={styles['catalog-card__name']}>{bag.name}</h3>
+        {bag.type && <p className={styles['catalog-card__type']}>{bag.type}</p>}
+        {bag.description && (
+          <p className={styles['catalog-card__description']}>{bag.description}</p>
+        )}
+      </div>
 
-      <div className={styles['catalog__footer']}>
-        <p className={styles['catalog__price']}>
-          {bag.price ? `${bag.price} ₽` : 'Цена не указана'}
-        </p>
+      <div className={styles['catalog-card__footer']}>
+        {formattedPrice && (
+          <p className={styles['catalog-card__price']}>{formattedPrice}</p>
+        )}
         <button
-          className={styles['catalog__button']}
-          aria-label={`Добавить ${bag.name} в корзину`}
-          onClick={handleAddToCart}
+          className={`${styles['catalog-card__button']} ${styles['catalog-card__more']}`}
+          onClick={handleMoreDetails}
         >
-          <FaShoppingCart className={styles['catalog__cart-icon']} />
-          В корзину
+          Подробнее
+        </button>
+        <button
+          className={`${styles['catalog-card__button']} ${styles['catalog-card__iconButton']}`}
+          onClick={handleAddToCart}
+          aria-label={`Добавить ${bag.name} в корзину`}
+          title="Добавить в корзину"
+        >
+          <FaShoppingCart className={styles['cart-icon']} />
         </button>
       </div>
     </article>
