@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
-import './Header.media.css';
-import { LoginModal } from "../LoginModal/LoginModal";
+import { LoginModal } from "../../Modals/LoginModal/LoginModal";
 import { FiPhone, FiUser, FiSearch, FiShoppingCart, FiMenu, FiX } from 'react-icons/fi';
-import logoBag from '../../assets/img/bag-logo.jpeg';
+import logoBag from '../../../assets/img/bag-logo.jpeg';
+
 
 export function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);

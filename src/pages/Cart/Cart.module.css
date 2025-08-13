@@ -6,6 +6,7 @@
   
   .cart-card {
     max-width: 520px;
+    width: 450px;
     margin: 80px auto 100px;
     background-color: #fff;
     border-radius: 12px;
@@ -25,6 +26,7 @@
     text-align: center;
     color: #888;
     font-size: 18px;
+    margin-top: 20px;
   }
   
   .cart-card__list {
@@ -103,7 +105,7 @@
     font-weight: 600;
     font-size: 18px;
     color: #333;
-    margin-right: 85px;
+    margin-right: 100px;
   }
 
   .cart-card__buttons-row {
@@ -147,13 +149,11 @@
   .cart-card__footer {
     margin-top: 32px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 10px;
   }
   
-  /* Итог */
   .cart-card__total {
     font-size: 20px;
     font-weight: 700;
@@ -170,16 +170,22 @@
     color: white;
     border: none;
     padding: 10px 24px;
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-family: "Liter", sans-serif;
-    white-space: nowrap;
-    user-select: none;
   }
   
   .cart-card__order-button:hover {
     background-color: #2c3e50;
+  }
+  
+  
+  
+  .cart-empty__video {
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: 12px;
   }
   

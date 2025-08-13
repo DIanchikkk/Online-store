@@ -1,31 +1,36 @@
 import React, { useState } from 'react';
 import styles from './Discounts.module.css';
-import { BagsCard } from '../../components/BagsCard/BagsCard';
-
+import { BagsCard } from '../../shared/UI/BagsCard/BagsCard';
 import ArrowLeft from '../../assets/img/ArrowLeft.svg?react';
 import ArrowRight from '../../assets/img/ArrowRight.svg?react';
-
 import { discountedProducts } from '../../mocks/discountedProducts';
-import { BackButton } from '../../components/BackButton/BackButton';
+import { BackButton } from '../../shared/UI/BackButton/BackButton';
+import { toast } from 'react-toastify';
 
 export function Discounts() {
   const [startIndex, setStartIndex] = useState(0);
   const cardsToShow = 3;
 
-  const prev = () => {
-    setStartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-  };
-
-  const next = () => {
-    setStartIndex((prevIndex) =>
-      Math.min(prevIndex + 1, discountedProducts.length - cardsToShow)
-    );
-  };
+  const prev = () => setStartIndex(i => Math.max(i - 1, 0));
+  const next = () =>
+    setStartIndex(i => Math.min(i + 1, discountedProducts.length - cardsToShow));
 
   const visibleCards = discountedProducts.slice(
     startIndex,
     startIndex + cardsToShow
   );
+
+  const showAddedToast = (itemName) => {
+    toast.success(`🛒 ${itemName} добавлен в корзину!`, {
+      position: 'bottom-right',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      className: 'custom-toast',
+    });
+  };
 
   return (
     <div className={styles.discounts}>
@@ -41,7 +46,6 @@ export function Discounts() {
           className={styles.discounts__arrow}
           onClick={prev}
           disabled={startIndex === 0}
-          aria-label="Предыдущие карточки"
         >
           <ArrowLeft />
         </button>
@@ -53,6 +57,7 @@ export function Discounts() {
               bag={bag}
               badge="СКИДКА"
               customImageClass="discountImage"
+              onAdd={showAddedToast}
             />
           ))}
         </div>
@@ -61,7 +66,6 @@ export function Discounts() {
           className={styles.discounts__arrow}
           onClick={next}
           disabled={startIndex >= discountedProducts.length - cardsToShow}
-          aria-label="Следующие карточки"
         >
           <ArrowRight />
         </button>

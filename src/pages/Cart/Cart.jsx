@@ -5,8 +5,10 @@ import {
   increaseQuantity,
   decreaseQuantity,
   removeFromCart,
+  clearCart,
 } from '../../features/cart/cartSlice';
-import { BackButton } from '../../components/BackButton/BackButton';
+import { BackButton } from '../../shared/UI/BackButton/BackButton';
+import emptyCartVideo from '../../assets/video/сart.mp4';
 
 export function Cart() {
   const dispatch = useDispatch();
@@ -19,6 +21,21 @@ export function Cart() {
     0
   );
 
+  const handleOrder = () => {
+    if (items.length === 0) {
+      alert('Корзина пуста');
+      return;
+    }
+    alert('Ваш заказ принят! Спасибо!');
+    dispatch(clearCart());
+  };
+
+  const handleClearCart = () => {
+    if (window.confirm('Очистить корзину?')) {
+      dispatch(clearCart());
+    }
+  };
+
   return (
     <div className={styles['cart-page']}>
       <BackButton style={{ top: '-20px', left: '50px' }} />
@@ -27,7 +44,16 @@ export function Cart() {
         <h1 className={styles['cart-card__title']}>Ваша корзина</h1>
 
         {items.length === 0 ? (
-          <p className={styles['cart-card__empty']}>Корзина пуста</p>
+          <div className={styles['cart-empty']}>
+            <video
+              src={emptyCartVideo}
+              autoPlay
+              loop
+              muted
+              className={styles['cart-empty__video']}
+            />
+            <p className={styles['cart-card__empty']}>Корзина пока пуста :(</p>
+          </div>
         ) : (
           <>
             <ul className={styles['cart-card__list']}>
@@ -95,13 +121,24 @@ export function Cart() {
                   {totalPrice.toLocaleString('ru-RU')} ₽
                 </span>
               </div>
-              <button
-                className={styles['cart-card__order-button']}
-                aria-label="Оформить заказ"
-                onClick={() => alert('Ваш заказ принят! Спасибо!')}
-              >
-                Сделать заказ
-              </button>
+
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <button
+                  className={styles['cart-card__order-button']}
+                  aria-label="Оформить заказ"
+                  onClick={handleOrder}
+                >
+                  Сделать заказ
+                </button>
+                <button
+                  className={styles['cart-card__order-button']}
+                  style={{ backgroundColor: '#b30000' }}
+                  aria-label="Очистить корзину"
+                  onClick={handleClearCart}
+                >
+                  Очистить
+                </button>
+              </div>
             </div>
           </>
         )}

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styles from './BagsCard.module.css';
 import { FaShoppingCart, FaHeart, FaRegHeart } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../features/cart/cartSlice';
+import { addToCart } from '../../../features/cart/cartSlice';
 
-export function BagsCard({ bag, badge = 'NEW', customImageClass }) {
+export function BagsCard({ bag, badge = 'NEW', customImageClass, onAdd }) {
   const [liked, setLiked] = useState(false);
   const dispatch = useDispatch();
 
@@ -14,6 +14,10 @@ export function BagsCard({ bag, badge = 'NEW', customImageClass }) {
       return;
     }
     dispatch(addToCart({ ...bag }));
+
+    if (onAdd) {
+      onAdd(bag.name);
+    }
   };
 
   const handleMoreDetails = () => {
@@ -23,11 +27,7 @@ export function BagsCard({ bag, badge = 'NEW', customImageClass }) {
   let formattedPrice = '';
   if (bag.price !== undefined && bag.price !== null) {
     const priceStr = String(bag.price).trim();
-    if (priceStr.includes('₽')) {
-      formattedPrice = priceStr;
-    } else {
-      formattedPrice = `${priceStr} ₽`;
-    }
+    formattedPrice = priceStr.includes('₽') ? priceStr : `${priceStr} ₽`;
   }
 
   return (
@@ -81,7 +81,6 @@ export function BagsCard({ bag, badge = 'NEW', customImageClass }) {
         <button
           className={`${styles['bags-card__button']} ${styles['bags-card__iconButton']}`}
           onClick={handleAddToCart}
-          aria-label={`Добавить ${bag.name} в корзину`}
         >
           <FaShoppingCart className={styles['cart-icon']} />
         </button>

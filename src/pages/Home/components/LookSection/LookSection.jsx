@@ -7,7 +7,7 @@ import 'swiper/css/autoplay';
 
 import styles from './LookSection.module.css';
 import { OutfitCard } from "../OutfitCard/OutfitCard";
-import { looksData } from '../../mocks/data';
+import { looksData } from '../../../../mocks/data';
 
 export function LookSection() {
   return (

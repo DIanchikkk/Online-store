@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import styles from './CatalogContent.module.css';
 import { FaShoppingCart, FaHeart, FaRegHeart } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../features/cart/cartSlice';
+import { addToCart } from '../../../../features/cart/cartSlice';
 
-export function CatalogContent({ collection }) {
+export function CatalogContent({ collection, onItemAdd }) {
+  if (!collection || !collection.bags) {
+    return <p className={styles.catalog__empty}>Нет товаров</p>;
+  }
+
   const bagsToShow = collection.bags.slice(0, 9);
 
   return (
@@ -14,14 +18,18 @@ export function CatalogContent({ collection }) {
 
       <div className={styles.catalog__grid}>
         {bagsToShow.map((bag) => (
-          <CatalogCard key={bag.id} bag={bag} />
+          <CatalogCard
+            key={bag.id}
+            bag={bag}
+            onAdd={() => onItemAdd && onItemAdd(bag.name)}
+          />
         ))}
       </div>
     </section>
   );
 }
 
-function CatalogCard({ bag }) {
+function CatalogCard({ bag, onAdd }) {
   const [liked, setLiked] = useState(false);
   const dispatch = useDispatch();
 
@@ -31,6 +39,10 @@ function CatalogCard({ bag }) {
       return;
     }
     dispatch(addToCart({ ...bag }));
+
+    if (onAdd) {
+      onAdd(bag.name); 
+    }
   };
 
   const handleMoreDetails = () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './CollectionsSection.module.css';
 
-import { collectionsData, mainImage } from '../../mocks/collectionsData';
+import { collectionsData, mainImage } from '../../../../mocks/collectionsData';
 
 export function CollectionsSection() {
   const navigate = useNavigate();
