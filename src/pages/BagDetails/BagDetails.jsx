@@ -68,7 +68,8 @@ export function BagDetails({ products }) {
           <h2>{bag.name}</h2>
           <p className={styles.type}>{bag.type}</p>
           <p className={styles.description}>{bag.description}</p>
-          <p className={styles.price}>{bag.price} ₽</p>
+          {/* убрали ₽, чтобы не было дубля */}
+          <p className={styles.price}>{bag.price}</p>
 
           {bag.sizes?.length > 0 && (
             <div className={styles.selectors}>
@@ -145,8 +146,20 @@ export function BagDetails({ products }) {
             pattern="^\+?\d{10,15}$"
           />
           <div className={styles.paymentOptions}>
-            <button type="button" className={paymentMethod==='cash'?styles.activePayment:''} onClick={()=>setPaymentMethod('cash')}>Наличными</button>
-            <button type="button" className={paymentMethod==='card'?styles.activePayment:''} onClick={()=>setPaymentMethod('card')}>Картой</button>
+            <button
+              type="button"
+              className={`${styles.paymentButton} ${paymentMethod === 'cash' ? styles.activePayment : ''}`}
+              onClick={() => setPaymentMethod('cash')}
+            >
+              Наличными
+            </button>
+            <button
+              type="button"
+              className={`${styles.paymentButton} ${paymentMethod === 'card' ? styles.activePayment : ''}`}
+              onClick={() => setPaymentMethod('card')}
+            >
+              Картой
+            </button>
           </div>
           <button type="submit">Оплатить</button>
         </form>

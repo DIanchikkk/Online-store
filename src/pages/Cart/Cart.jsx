@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Cart.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -13,6 +13,11 @@ import emptyCartVideo from '../../assets/video/сart.mp4';
 export function Cart() {
   const dispatch = useDispatch();
   const items = useSelector(state => state.cart.items);
+
+  // Прокрутка вверх при открытии страницы корзины
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const totalPrice = items.reduce(
     (total, item) =>
