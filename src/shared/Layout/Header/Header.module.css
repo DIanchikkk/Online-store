@@ -182,3 +182,105 @@
   border-radius: 50%; 
   margin-bottom: 10px;
 }
+
+
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 12px 30px;
+    gap: 20px;
+  }
+
+  .header__nav {
+    gap: 15px;
+  }
+
+  .logoText {
+    font-size: 30px;
+  }
+
+  .header__search {
+    max-width: 200px;
+  }
+}
+
+/* Малые планшеты и большие телефоны: ширина <= 768px */
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 20px;
+    max-height: none;
+  }
+
+  .header__left {
+    order: 2;
+    width: 100%;
+  }
+
+  .header__center {
+    order: 1;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .header__right {
+    order: 3;
+    width: 100%;
+    align-items: center;
+  }
+
+  .header__nav {
+    flex-direction: column;
+    gap: 10px;
+    display: none;
+  }
+
+  .header__nav.open {
+    display: flex;
+  }
+
+  .header__mobileMenuToggle {
+    display: block;
+  }
+
+  .header__search {
+    width: 100%;
+    max-width: none;
+  }
+
+  .header__input {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* Мобильные телефоны: ширина <= 480px */
+@media (max-width: 480px) {
+  .logoText {
+    font-size: 24px;
+    letter-spacing: 4px;
+  }
+
+  .header__icon {
+    font-size: 16px;
+  }
+
+  .header__phoneIcon {
+    font-size: 16px;
+  }
+
+  .header__contact {
+    font-size: 12px;
+  }
+
+  .header__search {
+    width: 100%;
+    max-width: none;
+  }
+
+  .header__input {
+    font-size: 12px;
+    padding: 4px 32px 4px 8px;
+  }
+}

@@ -1,0 +1,235 @@
+.container {
+    margin: 0px;
+    padding: 100px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Liter", sans-serif;
+    position: relative;
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: row;
+    max-width: 850px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    padding: 5px;
+    gap: 20px;
+  }
+  
+  .imageContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .productImage {
+    max-width: 100%;
+    border-radius: 12px;
+    object-fit: contain;
+  }
+  
+  .info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    gap: 5px;
+  }
+  
+  .info h2 {
+    font-size: 32px;
+  }
+  
+  .price {
+    font-weight: 600;
+    font-size: 20px;
+  }
+  
+  .buttonsRow {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .selectors p{
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  .sizeButton, .colorButton {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    transition: 0.2s;
+  }
+  
+  .colorButton {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 50%;
+  }
+  
+  .activeButton {
+    border: 2px solid #556575;
+  }
+  
+  .actionRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .quantityInput {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+  }
+  
+  .buyButton {
+    padding: 10px 50px;
+    background: #556575;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+  }
+  
+  .buyButton:hover {
+    background: #222;
+  }
+  
+  .buyButton:active {
+    transform: scale(0.97);
+  }
+  
+  .iconButton {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #556575;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+  }
+  
+  .iconButton:hover {
+    background: #222;
+  }
+  
+  .iconButton:active {
+    transform: scale(1.15);
+  }
+  
+  .orderFormCard {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .userForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  .userForm h3 {
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 32px;
+    text-align: center;
+  }
+  
+  .userForm input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .userForm button[type="submit"] {
+    padding: 10px;
+    background: transparent;
+    color: #222;
+    border: 2px solid#556575;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .userForm button[type="submit"]:hover {
+    background-color: #556575;
+    color: #fff;
+  }
+  
+  .paymentOptions {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+    justify-content: center;
+  }
+  
+  .paymentButton {
+    flex: 1;
+    padding: 10px 20px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  
+  .activePayment {
+    background-color: #556575;
+    color: #fff;
+    border-color: #444;
+  }
+  .relatedSection {
+    width: 100%;
+    max-width: 850px;
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  .relatedSection h4 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .relatedItems {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  
+    gap: 10px; 
+  }
+  
+  
+  .notFound {
+    margin-top: 100px;
+    font-size: 20px;
+    text-align: center;
+  }
+  

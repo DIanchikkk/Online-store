@@ -97,3 +97,131 @@
     padding-top: 20px;
   }
   
+  /* ========== Супер маленькие экраны <324px ========== */
+@media (max-width: 324px) {
+  .footer__container {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .footer__logo {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  .footer__description {
+    font-size: 10px;
+    text-align: center;
+  }
+  .footer__title {
+    font-size: 14px;
+  }
+  .footer__link {
+    font-size: 10px;
+  }
+  .footer__contact {
+    font-size: 12px;
+    text-align: center;
+  }
+  .footer__icon {
+    font-size: 18px;
+  }
+}
+
+/* ========== Маленькие телефоны <480px ========== */
+@media (max-width: 480px) {
+  .footer__container {
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+  }
+  .footer__logo {
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+  .footer__description {
+    font-size: 12px;
+    text-align: center;
+  }
+  .footer__section {
+    text-align: center;
+  }
+  .footer__link {
+    font-size: 12px;
+  }
+  .footer__contact {
+    font-size: 12px;
+    text-align: center;
+  }
+  .footer__socials {
+    display: flex;
+    gap: 5px;
+    margin-left: 70px;
+  }
+  .footer__icon {
+    font-size: 20px;
+  }
+}
+
+/* ========== Телефоны и маленькие планшеты 481–768px ========== */
+@media (min-width: 481px) and (max-width: 768px) {
+  .footer {
+    padding: 50px 20px 30px;
+  }
+  
+  .footer__container {
+    gap: 14px;
+  }
+  .footer__logo {
+    font-size: 28px;
+    letter-spacing: 6px;
+    text-align: center;
+  }
+  .footer__description {
+    font-size: 13px;
+    text-align: center;
+  }
+  .footer__section {
+    min-width: 200px;
+  }
+  .footer__link {
+    font-size: 13px;
+  }
+  .footer__contact {
+    font-size: 13px;
+  }
+  .footer__icon {
+    font-size: 20px;
+  }
+}
+
+
+@media (min-width: 765px) and (max-width: 1200px) 
+{
+  .footer__container {
+    gap: 28px; /* Пусть расстояния будут мягко средние */
+    justify-content: space-between; /* Секции растянулись, как облака в небе */
+  }
+  .footer__logo {
+    font-size: 34px; /* Логотип растёт, как весенний цветок */
+    letter-spacing: 7px;
+    margin-left: 50px;
+  }
+  .footer__description {
+    font-size: 14px; /* Слова текут легко, словно река */
+    text-align: center;
+  }
+  .footer__section {
+    min-width: 200px; /* Пусть секции стоят уверенно, как деревья в ряду */
+  }
+  .footer__link {
+    font-size: 14px; /* Ссылки — как строчки в стихах, читаются плавно */
+  }
+  .footer__contact {
+    font-size: 14px; /* Телефон — мелодия для глаз */
+  }
+  .footer__icon {
+    font-size: 22px; /* Иконки сияют, словно маленькие звёзды */
+  }
+}
+

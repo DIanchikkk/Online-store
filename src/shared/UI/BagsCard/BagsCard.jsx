@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styles from './BagsCard.module.css';
 import { FaShoppingCart, FaHeart, FaRegHeart } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../features/cart/cartSlice';
 
 export function BagsCard({ bag, badge = 'NEW', customImageClass, onAdd }) {
   const [liked, setLiked] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleAddToCart = () => {
     if (!bag.id) {
@@ -14,14 +16,11 @@ export function BagsCard({ bag, badge = 'NEW', customImageClass, onAdd }) {
       return;
     }
     dispatch(addToCart({ ...bag }));
-
-    if (onAdd) {
-      onAdd(bag.name);
-    }
+    if (onAdd) onAdd(bag.name);
   };
 
   const handleMoreDetails = () => {
-    console.log('Переход на страницу товара:', bag.id);
+    navigate(`/bag/${bag.id}`);
   };
 
   let formattedPrice = '';
@@ -40,24 +39,16 @@ export function BagsCard({ bag, badge = 'NEW', customImageClass, onAdd }) {
         aria-label={liked ? 'Удалить из избранного' : 'Добавить в избранное'}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') setLiked(!liked);
-        }}
+        onKeyDown={(e) => { if (e.key === 'Enter') setLiked(!liked); }}
       >
-        {liked ? (
-          <FaHeart className={styles['like-icon']} />
-        ) : (
-          <FaRegHeart className={styles['like-icon']} />
-        )}
+        {liked ? <FaHeart className={styles['like-icon']} /> : <FaRegHeart className={styles['like-icon']} />}
       </div>
 
       <div className={styles['bags-card__imageContainer']}>
         <img
           src={bag.image || '/images/fallback.jpg'}
           alt={bag.name || 'Товар'}
-          className={`${styles['bags-card__image']} ${
-            customImageClass ? styles[customImageClass] : ''
-          }`}
+          className={`${styles['bags-card__image']} ${customImageClass ? styles[customImageClass] : ''}`}
           draggable={false}
         />
       </div>
@@ -69,9 +60,7 @@ export function BagsCard({ bag, badge = 'NEW', customImageClass, onAdd }) {
       </div>
 
       <div className={styles['bags-card__footer']}>
-        {formattedPrice && (
-          <p className={styles['bags-card__price']}>{formattedPrice}</p>
-        )}
+        {formattedPrice && <p className={styles['bags-card__price']}>{formattedPrice}</p>}
         <button
           className={`${styles['bags-card__button']} ${styles['bags-card__more']}`}
           onClick={handleMoreDetails}

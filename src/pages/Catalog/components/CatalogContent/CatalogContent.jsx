@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styles from './CatalogContent.module.css';
 import { FaShoppingCart, FaHeart, FaRegHeart } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../../features/cart/cartSlice';
 
 export function CatalogContent({ collection, onItemAdd }) {
-  if (!collection || !collection.bags) {
-    return <p className={styles.catalog__empty}>Нет товаров</p>;
-  }
+  if (!collection || !collection.bags) return <p className={styles.catalog__empty}>Нет товаров</p>;
 
   const bagsToShow = collection.bags.slice(0, 9);
 
@@ -32,21 +31,16 @@ export function CatalogContent({ collection, onItemAdd }) {
 function CatalogCard({ bag, onAdd }) {
   const [liked, setLiked] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleAddToCart = () => {
-    if (!bag.id) {
-      console.error('Ошибка: у товара нет id');
-      return;
-    }
+    if (!bag.id) return console.error('Ошибка: у товара нет id');
     dispatch(addToCart({ ...bag }));
-
-    if (onAdd) {
-      onAdd(bag.name); 
-    }
+    if (onAdd) onAdd(bag.name);
   };
 
   const handleMoreDetails = () => {
-    console.log('Переход на страницу товара:', bag.id);
+    navigate(`/bag/${bag.id}`);
   };
 
   let formattedPrice = '';
@@ -65,11 +59,7 @@ function CatalogCard({ bag, onAdd }) {
         tabIndex={0}
         onKeyDown={(e) => { if (e.key === 'Enter') setLiked(!liked); }}
       >
-        {liked ? (
-          <FaHeart className={styles['like-icon']} />
-        ) : (
-          <FaRegHeart className={styles['like-icon']} />
-        )}
+        {liked ? <FaHeart className={styles['like-icon']} /> : <FaRegHeart className={styles['like-icon']} />}
       </div>
 
       <div className={styles['catalog-card__imageContainer']}>
@@ -84,15 +74,11 @@ function CatalogCard({ bag, onAdd }) {
       <div className={styles['catalog-card__content']}>
         <h3 className={styles['catalog-card__name']}>{bag.name}</h3>
         {bag.type && <p className={styles['catalog-card__type']}>{bag.type}</p>}
-        {bag.description && (
-          <p className={styles['catalog-card__description']}>{bag.description}</p>
-        )}
+        {bag.description && <p className={styles['catalog-card__description']}>{bag.description}</p>}
       </div>
 
       <div className={styles['catalog-card__footer']}>
-        {formattedPrice && (
-          <p className={styles['catalog-card__price']}>{formattedPrice}</p>
-        )}
+        {formattedPrice && <p className={styles['catalog-card__price']}>{formattedPrice}</p>}
         <button
           className={`${styles['catalog-card__button']} ${styles['catalog-card__more']}`}
           onClick={handleMoreDetails}
